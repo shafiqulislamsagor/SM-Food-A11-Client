@@ -9,7 +9,7 @@ const Footer = () => {
                     <div rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
                         <Link to='/' className="text-3xl font-bold text-white flex items-center gap-2 cursor-pointer">
                         <img className='w-12' src="/—Pngtree—food logo_8366734.png" alt="" />
-                        SM Food
+                        <span className="text-[#ff0] textLayer">SM</span> Food
                     </Link>
                     </div>
                 </div>

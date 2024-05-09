@@ -58,8 +58,8 @@ const Register = () => {
                         <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
                             Already have an account?
                             <Link to='/login'
-                                className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
-                            >Log-In</Link>
+                                className="text-danger underline transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
+                            > Log-In</Link>
                         </p>
                     </form>
                 </div>
