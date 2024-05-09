@@ -21,7 +21,7 @@ const Navbar = () => {
         </div>
     </>
     return (
-        <div className=' bg-gray-900 sticky top-0'>
+        <div className=' bg-gray-900 sticky top-0 z-50'>
             <div className="navbar md:w-[95%] mx-auto">
                 <div className="navbar-start w-full lg:w-1/2">
                     <div className="dropdown">
@@ -43,9 +43,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end w-1/3">
-                    <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-gray-200 text-black hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white">
-                        Sign in
-                    </button>
+                    <Link to='/login' type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-gray-200 text-black hover:btnHoverColor  btnColor  disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-[#e48413] dark:text-white dark:hover:text-white">
+                        Log in
+                    </Link>
                 </div>
             </div>
         </div>
