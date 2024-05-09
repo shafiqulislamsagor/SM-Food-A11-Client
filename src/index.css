@@ -5,12 +5,45 @@
 @tailwind utilities;
 
 .poppins {
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .btnColor {
-    background-color: #ad1a19;
+  background-color: #ad1a19;
 }
 .btnHoverColor {
-    background-color: #e48413;
+  background-color: #e48413;
+}
+
+.textLayer{
+    text-shadow:2px 2px 5px #ad1a19;
+
+}
+
+.text_Yellow{
+    color: #ff0;
+}
+.bannerImg {
+  background-image: url("https://i.ibb.co/zbq9vK9/louis-hansel-K47107a-P8-UU-unsplash.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.marquee-container {
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }

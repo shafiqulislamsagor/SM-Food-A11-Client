@@ -21,7 +21,7 @@ const Navbar = () => {
         </div>
     </>
     return (
-        <div className=' bg-gray-900'>
+        <div className=' bg-gray-900 sticky top-0'>
             <div className="navbar md:w-[95%] mx-auto">
                 <div className="navbar-start w-full lg:w-1/2">
                     <div className="dropdown">
@@ -34,7 +34,7 @@ const Navbar = () => {
                     </div>
                     <Link to='/' className="text-xl lg:text-3xl font-bold text-white flex items-center gap-2 cursor-pointer">
                         <img className='w-9 md:w-12' src="/—Pngtree—food logo_8366734.png" alt="" />
-                        SM Food
+                        <span className="text-[#ff0] textLayer">SM</span> Food
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex ml-14">
