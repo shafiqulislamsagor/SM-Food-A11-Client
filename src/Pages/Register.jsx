@@ -2,13 +2,14 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { TbPasswordUser } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RegisterAnimation from "../animation/RegisterAnimation";
 import UseAuth from "../hooks/UseAuth";
 import Swal from "sweetalert2";
 
 
 const Register = () => {
+    const navigate = useNavigate()
 
     const { UserCreate, UserUpdate, UserLogout } = UseAuth()
 
@@ -24,15 +25,17 @@ const Register = () => {
 
         UserCreate(email, password)
             .then(() => {
-                console.log('user create');
+                // console.log('user create');
                 UserUpdate(name, photo)
                     .then(() => {
                         Swal.fire({
                             title: "Successfully",
-                            text: "Your Account has been Created..!",
+                            text: "Your Account has been Created..! Please Log in Your Accounts",
                             icon: "success"
                         });
                         UserLogout()
+                        navigate('/login')
+                        target.reset()
                     })
             })
             .catch(() => {
@@ -41,6 +44,7 @@ const Register = () => {
                     text: "Already Your Account created this Email..!",
                     icon: "error"
                 });
+                target.reset()
             })
 
         console.log(name, photo, email, password);
