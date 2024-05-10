@@ -24,7 +24,7 @@ const Navbar = () => {
     </>
 
     const { user, UserLogout } = UseAuth()
-    console.log(user);
+    // console.log(user);
     const logout = () => {
         UserLogout()
             .then(() => {
@@ -66,7 +66,7 @@ const Navbar = () => {
                                     <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-white rounded-box w-52">
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 border text-white rounded-box w-52">
                                 <li onClick={logout}><a>Logout</a></li>
                             </ul>
                         </div>

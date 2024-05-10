@@ -7,9 +7,9 @@ import UseAuth from './hooks/UseAuth';
 
 function App() {
 
-  const {loading,user} = UseAuth()
+  const {loading} = UseAuth()
 
-  console.log(user,loading);
+  // console.log(user,loading);
   if(!loading) return <p>Loading now..........</p>
 
   return (

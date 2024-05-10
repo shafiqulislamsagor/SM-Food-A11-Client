@@ -1,12 +1,55 @@
+import axios from "axios";
+import UseAuth from "../hooks/UseAuth";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 
 
 const AddFoods = () => {
+
+    const {user} = UseAuth()
+
+    // console.log(user);
+    const AddCard = async(event) =>{
+        event.preventDefault()
+
+        const target = event.target
+        const FoodName = target.FoodName.value;
+        const FoodImage = target.FoodPhoto.value;
+        const DonatorEmail =  target.email.value;
+        const DonatorName = target.Donator.value;
+        const FoodQuantity=  target.Quantity.value;
+        const PickupLocation= target.Location.value;
+        const ExpiredDateTime=  target.date.value;
+        const AdditionalNotes= target.AdditionalNotes.value
+        const status= target.order.value;
+        const donatorImage = user.photoURL
+
+        const Donator = {DonatorEmail,DonatorName ,donatorImage}
+
+        const Food = {FoodName,FoodImage,Donator,FoodQuantity,PickupLocation,ExpiredDateTime,AdditionalNotes,status}
+
+        console.log(Food);
+        
+        try{
+            await axios.post(`${import.meta.env.VITE_API_URL}/food`,Food)
+            Swal.fire({
+                title: "Successfully",
+                text: "Your Food Product Added..!!",
+                icon: "success"
+            });
+            target.reset()
+        }
+        catch(error){
+            toast.error(error.message)
+        }
+
+    }
     const today = new Date().toISOString().split('T')[0];
     return (
         <div className="my-12">
             <h2 className="text-center text-3xl my-5">Added Foods</h2>
-            <form className="w-11/12 md:w-3/5 mx-auto">
+            <form onSubmit={AddCard} className="w-11/12 md:w-3/5 mx-auto">
                 <div className="relative z-0 w-full mb-5 group">
                     <input
                         type="text"
@@ -44,7 +87,9 @@ const AddFoods = () => {
                         <input
                             type="email"
                             name="email"
+                            disabled
                             id="email"
+                            defaultValue={user?.email}
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
@@ -59,14 +104,15 @@ const AddFoods = () => {
                     <div className="relative z-0 w-full mb-5 group">
                         <input
                             type="text"
-                            name="sellerName"
-                            id="sellerName"
+                            name="Donator"
+                            disabled
+                            defaultValue={user?.displayName}
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                             required
                         />
                         <label
-                            htmlFor="sellerName"
+                            htmlFor="Donator"
                             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                         >
                             Donator name
@@ -76,7 +122,7 @@ const AddFoods = () => {
                 <div className="relative z-0 w-full mb-5 group">
                     <input
                         type="text"
-                        name="description"
+                        name="AdditionalNotes"
                         id="description"
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
@@ -86,7 +132,7 @@ const AddFoods = () => {
                         htmlFor="description"
                         className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                        Short Description
+                        Additional Notes
                     </label>
                 </div>
 
@@ -132,7 +178,7 @@ const AddFoods = () => {
                             <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Status</label>
 
                             <div className="flex items-center mb-4">
-                                <input id="country-option-1" type="radio" name="order" value=" In stock" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" defaultChecked />
+                                <input id="country-option-1" type="radio" name="order" value=" Available" className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600" defaultChecked />
                                 <label htmlFor="country-option-1" className="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                     Available
                                 </label>
@@ -160,8 +206,8 @@ const AddFoods = () => {
                     <div className="mb-4">
                         <label  className="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Donator Images</label>
                         <img
-                            src="https://tecdn.b-cdn.net/img/new/standard/city/047.jpg"
-                            className="h-auto max-w-full rounded-lg"
+                            src={user?.photoURL}
+                            className="h-auto max-w-full w-24 rounded-lg"
                             alt="" />
                     </div>
 
