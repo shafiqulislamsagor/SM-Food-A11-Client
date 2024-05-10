@@ -1,6 +1,7 @@
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { TbPasswordUser } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import LoginAnimation from "../animation/LoginAnimation";
 
 const Login = () => {
     return (
@@ -9,10 +10,7 @@ const Login = () => {
                 <div className="text-center lg:text-left text-white">
                     <div
                         className="">
-                        <img
-                            src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                            className="w-full"
-                            alt="Phone image" />
+                        <LoginAnimation/>
                     </div>
                 </div>
                 <div className="card shrink-0 w-full lg:max-w-[50%] shadow-2xl bg-base-100">
