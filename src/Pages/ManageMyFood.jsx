@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ManageCard from "../components/ManageCard";
+import UseAuth from './../hooks/UseAuth';
 
 const ManageMyFood = () => {
 
+    const {user} = UseAuth()
+
     const getFood = async() =>{
-        const foodData = await axios(`${import.meta.env.VITE_API_URL}/food`, { withCredentials: true })
+        const foodData = await axios(`${import.meta.env.VITE_API_URL}/foods/${user?.email}`, { withCredentials: true })
         return foodData.data
     }
 
