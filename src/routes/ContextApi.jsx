@@ -30,9 +30,9 @@ const ContextApi = ({ children }) => {
         return signInWithPopup(Auth,provider)
     }
 
-    const UserLogout = async () => {
+    const UserLogout = () => {
         setLoading(false)
-        return await signOut()
+        return signOut(Auth)
     }
 
     useEffect(() => {

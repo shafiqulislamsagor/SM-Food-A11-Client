@@ -6,12 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const FeatureFood = () => {
-    console.log(`${import.meta.env.VITE_API_URL}/food`);
-
-
-
-
-
+    // console.log(`${import.meta.env.VITE_API_URL}/food`);
     const foodData = async () => {
         try {
             const { data } = await axios(`${import.meta.env.VITE_API_URL}/food`, { withCredentials: true })

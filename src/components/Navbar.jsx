@@ -1,4 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
+import UseAuth from './../hooks/UseAuth';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const menuNavLink = <>
@@ -20,6 +22,18 @@ const Navbar = () => {
             </div>
         </div>
     </>
+
+    const { user, UserLogout } = UseAuth()
+    console.log(user);
+    const logout = () => {
+        UserLogout()
+            .then(() => {
+                toast.success('Your account Log Out now...!')
+            })
+            .catch(()=>{
+                toast.error('try again...!')
+            })
+    }
     return (
         <div className=' bg-gray-900 sticky top-0 z-50'>
             <div className="navbar md:w-[95%] mx-auto">
@@ -43,9 +57,20 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end w-1/3">
-                    <Link to='/login' type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-gray-200 text-black hover:btnHoverColor  btnColor  disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-[#e48413] dark:text-white dark:hover:text-white">
-                        Log in
-                    </Link>
+                    {
+                        !user ? <Link to='/login' type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-gray-200 text-black hover:btnHoverColor  btnColor  disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-[#e48413] dark:text-white dark:hover:text-white">
+                            Log in
+                        </Link> : <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-white rounded-box w-52">
+                                <li onClick={logout}><a>Logout</a></li>
+                            </ul>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
