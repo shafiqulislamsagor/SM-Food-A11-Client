@@ -2,21 +2,21 @@ import { Link, NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     const menuNavLink = <>
-        <div className="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0">
+        <div className="flex flex-col gap-y-4 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-7 lg:mt-0">
             <div>
-                <NavLink to='/login' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#" aria-current="page">Home</NavLink>
+                <NavLink to='/' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#" aria-current="page">Home</NavLink>
             </div>
             <div>
-                <NavLink className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#"> Available Foods</NavLink>
+                <NavLink to='/available-foods' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#"> Available Foods</NavLink>
             </div>
             <div>
-                <NavLink className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#">Add Food</NavLink>
+                <NavLink to='/add-foods' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#">Add Food</NavLink>
             </div>
             <div>
-                <NavLink className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#"> Manage My Foods</NavLink>
+                <NavLink to='/manage-my-food' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#"> Manage My Foods</NavLink>
             </div>
             <div>
-                <NavLink className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#">My Food Request</NavLink>
+                <NavLink to='/my-food-request' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#">My Food Request</NavLink>
             </div>
         </div>
     </>
@@ -28,7 +28,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] pt-0 p-5 shadow bg-base-100 rounded-box w-48">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] pt-0 p-5 shadow bg-base-100 rounded-box max-w-48 min-w-48">
                             {menuNavLink}
                         </ul>
                     </div>

@@ -23,7 +23,7 @@ const FeatureFood = () => {
     }
     const { data: foodItems = [], isLoading } = useQuery({
         queryFn: () => foodData(),
-        queryKey: ['bids', foodData],
+        queryKey: ['food', foodData],
     })
     // console.log(isLoading);
     // console.log(foodItems);
