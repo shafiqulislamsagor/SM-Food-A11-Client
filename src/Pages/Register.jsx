@@ -4,21 +4,59 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { TbPasswordUser } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import RegisterAnimation from "../animation/RegisterAnimation";
+import UseAuth from "../hooks/UseAuth";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
+
+    const { UserCreate, UserUpdate, UserLogout } = UseAuth()
+
+    const RegisterForm = event => {
+
+        event.preventDefault()
+
+        const target = event.target
+        const name = target.name.value
+        const photo = target.photo.value
+        const email = target.email.value
+        const password = target.password.value
+
+        UserCreate(email, password)
+            .then(() => {
+                console.log('user create');
+                UserUpdate(name, photo)
+                    .then(() => {
+                        Swal.fire({
+                            title: "Successfully",
+                            text: "Your Account has been Created..!",
+                            icon: "success"
+                        });
+                        UserLogout()
+                    })
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: "Sorry",
+                    text: "Already Your Account created this Email..!",
+                    icon: "error"
+                });
+            })
+
+        console.log(name, photo, email, password);
+    }
     return (
         <div className="hero register_img min-h-screen bg-base-200">
             <div className="hero-content w-[95%] md:w-4/5 mx-auto flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left text-white">
                     <div
                         className="">
-                        <RegisterAnimation/>
+                        <RegisterAnimation />
                     </div>
                 </div>
                 <div className="card shrink-0 w-full lg:max-w-[50%] shadow-2xl bg-base-100">
-                    
-                    <form className="card-body pt-10">
+
+                    <form onSubmit={RegisterForm} className="card-body pt-10">
                         <div>
                             <h2 className="text-center text-3xl text-white font-bold">Register Now</h2>
                         </div>
