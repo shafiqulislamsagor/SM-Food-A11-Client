@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const FeatureCard = ({ card }) => {
     // const { _id, FoodImage, FoodName, Donator, FoodQuantity, PickupLocation, status, ExpiredDateTime, AdditionalNotes } = card
-    const { FoodImage, FoodName, Donator, FoodQuantity, PickupLocation, status, ExpiredDateTime } = card
-    console.log(card);
+    const { _id ,FoodImage, FoodName, Donator, FoodQuantity, PickupLocation, status, ExpiredDateTime } = card
+    // console.log(card);
     const [date, setDate] = useState(new DateObject().format())
     useEffect(() => {
 
@@ -39,7 +39,7 @@ const FeatureCard = ({ card }) => {
                         </a>
                         <p className="leading-snug mt-2 text-white text-base">Location : {PickupLocation}</p>
                     </div>
-                    <Link className="btn btn-primary text-sm h-auto px-3 text-white min-h-0 py-2">
+                    <Link to={`/food-info/${_id}`} className="btn btn-primary text-sm h-auto px-3 text-white min-h-0 py-2">
                         View Details
                     </Link>
                 </div>

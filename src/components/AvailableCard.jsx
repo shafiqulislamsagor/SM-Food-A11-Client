@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const AvailableCard = ({ card }) => {
-    const { FoodImage, FoodName, Donator, FoodQuantity, status, ExpiredDateTime,PickupLocation } = card
+    const {_id, FoodImage, FoodName, Donator, FoodQuantity, status, ExpiredDateTime, PickupLocation , AdditionalNotes } = card
     // console.log(card);
     const [date, setDate] = useState(new DateObject().format())
     useEffect(() => {
@@ -30,14 +30,13 @@ const AvailableCard = ({ card }) => {
                         <span>Expired Date : {date}</span>
                     </div>
                 </div>
-                <div className="space-y-2  flex justify-between items-center">
+                <div className="space-y-2  ">
                     <div>
-                        <a rel="noopener noreferrer" href="#" className="flex items-center gap-3">
-                            <h3 className="text-xl font-semibold text-blue-400">{FoodName}</h3>
-                        </a>
+                        <h3 className="text-xl font-semibold text-blue-400">{FoodName}</h3>
                         <p className="leading-snug mt-2 text-white text-base">Location : {PickupLocation}</p>
+                        <p title={AdditionalNotes} className="text-sm text-gray-500"><span className="text-base text-gray-300 font-semibold">Description:</span> {AdditionalNotes.slice(0, 20)}....</p>
                     </div>
-                    <Link className="btn btn-primary text-sm h-auto px-3 text-white min-h-0 py-2">
+                    <Link to={`/food-info/${_id}`} className="btn btn-primary text-sm h-auto px-3 text-white min-h-0 py-2">
                         View Details
                     </Link>
                 </div>

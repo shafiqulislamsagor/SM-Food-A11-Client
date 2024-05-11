@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 const AvailableFoods = () => {
 
-    const [parpage, setparpage] = useState(3)
     const [FoodCount, setFoodCounts] = useState(0)
     const [current, setcurrent] = useState(1)
     const [filter, setFilter] = useState('')
@@ -18,6 +17,7 @@ const AvailableFoods = () => {
         return data;
     }
     
+    const parpage = 9 ;
 
 
 
