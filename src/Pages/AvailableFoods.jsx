@@ -1,18 +1,48 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import AvailableCard from "../components/AvailableCard";
+import { useEffect, useState } from "react";
 
 
 const AvailableFoods = () => {
+
+    const [parpage, setparpage] = useState(3)
+    const [FoodCount, setFoodCounts] = useState(0)
+    const [current,setcurrent] = useState(1)
+
+    // Food All data 
     const FoodData = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_API_URL}/food`)
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/food-All?page=${current}&size=${parpage}`);
         return data
     }
 
     const { data: AllFood = [], isLoading } = useQuery({
         queryFn: () => FoodData(),
-        queryKey: 'food'
+        queryKey: ['food',current,parpage]
     })
+
+    
+    
+    // console.log(FoodCount);
+
+    const pagecount = Math.ceil(FoodCount / parpage)
+
+    const pages = [...Array(pagecount).keys()].map(page => page +1)
+    // console.log(pages);
+
+    const buttonClick = (value) =>{
+        
+        setcurrent(value)
+    }
+
+    console.log(current);
+    useEffect(() => {
+        const loaded = async () => {
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/food-counts`);
+            setFoodCounts(data.foodCounts)
+        }
+        loaded()
+    }, [])
 
     if (isLoading) return <p>Loading........!</p>
     return (
@@ -43,7 +73,7 @@ const AvailableFoods = () => {
                 </select>
             </div>
             <div className="w-[95%] mx-auto">
-                <h2 className="text-4xl font-medium"><span className="text-[#ff0] textLayer"> Available</span> Foods</h2>
+                <h2 className="text-4xl font-medium"><span className="text-[#ff0] textLayer"> Available</span> Foods Page : {current}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
                     {
                         AllFood.map((single, id) => <AvailableCard card={single} key={id} />)
@@ -51,20 +81,18 @@ const AvailableFoods = () => {
                 </div>
                 <div className="mb-20 flex justify-center">
                     <nav aria-label="Pagination" className="inline-flex -space-x-px rounded-md shadow-sm bg-gray-800 text-gray-100 ">
-                        <button type="button" className="inline-flex items-center px-2 py-2 text-sm font-semibold border rounded-l-md border-gray-700">
+                        <button disabled={current === 1} onClick={()=>buttonClick(current - 1)} type="button" className="inline-flex items-center px-2 py-2 text-sm font-semibold border rounded-l-md border-gray-700">
                             <span className="sr-only">Previous</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
                                 <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd"></path>
                             </svg>
                         </button>
-                        <button type="button" aria-current="page" className="inline-flex items-center px-4 py-2 text-sm font-semibold border bg-blue-400 text-gray-900 border-gray-700">1</button>
-                        <button type="button" className="inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-700">2</button>
-                        <button type="button" className="inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-700">3</button>
-                        <button type="button" className="inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-700">...</button>
-                        <button type="button" className="inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-700">7</button>
-                        <button type="button" className="inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-700">8</button>
-                        <button type="button" className="inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-700">9</button>
-                        <button type="button" className="inline-flex items-center px-2 py-2 text-sm font-semibold border rounded-r-md border-gray-700">
+                        {/* inline-flex items-center px-4 py-2 text-sm font-semibold border bg-blue-400 text-gray-900 border-gray-700 */}
+                        {
+                            pages.map((button) => <button onClick={()=>buttonClick(button)} key={button} type="button" className={`${current === button && 'bg-black text-white'}inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-700 hover:bg-black hover:text-white`}>{button}</button>)
+                        }
+
+                        <button onClick={()=>buttonClick(current +1)} disabled={current === pages.length} type="button" className="inline-flex items-center px-2 py-2 text-sm font-semibold border rounded-r-md border-gray-700">
                             <span className="sr-only">Next</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
                                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path>

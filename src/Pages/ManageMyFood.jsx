@@ -14,7 +14,7 @@ const ManageMyFood = () => {
 
     const {data,isLoading} = useQuery({
         queryFn:()=> getFood(),
-        queryKey:'food'
+        queryKey:['food']
     })
 
     if(isLoading) return <p>Loading now..........!!</p>
