@@ -45,7 +45,7 @@ const ManageMyFood = () => {
                     </thead>
                     <tbody>
                     {
-                    data.map((single, id) => <ManageCard key={id} card={single} />)
+                    data.map((single, id) => <ManageCard key={id}  card={single} />)
                 }
                     </tbody>
                 </table>
