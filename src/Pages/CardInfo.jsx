@@ -29,18 +29,23 @@ const CardInfo = () => {
         const notes = e.target.Notes.value
         const orderDate = new DateObject().format("DD/MM/YYYY")
         const donerEmail = e.target.userName.value
-        const donarId = _id
         const donarName = user.displayName
-        const donar = { notes, orderDate, donarName, donerEmail, donarId }
+        const donar = { notes, orderDate, donarName, donerEmail }
         const status = 'Requested'
         // console.log(donar);
         const NewRequest = { FoodName, FoodImage, Donator, FoodQuantity, PickupLocation, ExpiredDateTime, AdditionalNotes, status, donar }
         console.log(NewRequest);
         axios.post(`${import.meta.env.VITE_API_URL}/food-request`, NewRequest)
             .then(() => {
-                toast.success('Food Request Successfully..!')
-                setStatus(status)
-                navigate('/my-food-request')
+                
+                axios.put(`${import.meta.env.VITE_API_URL}/food/${_id}`,{status})
+                .then(()=>{
+                    toast.success('Food Request Successfully..!')
+                    setStatus(status)
+                    navigate('/my-food-request')
+                })
+                .catch(()=>{
+                })
             })
             .catch(()=>{
                 toast.error('Try again later..!')

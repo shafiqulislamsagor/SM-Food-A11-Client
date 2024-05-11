@@ -117,7 +117,7 @@ const AvailableFoods = () => {
                             pages.map((button) => <button onClick={() => buttonClick(button)} key={button} type="button" className={`${current === button && 'bg-black text-white'}inline-flex items-center px-4 py-2 text-sm font-semibold border border-gray-700 hover:bg-black hover:text-white`}>{button}</button>)
                         }
 
-                        <button onClick={() => buttonClick(current + 1)} disabled={current === pages.length} type="button" className="inline-flex items-center px-2 py-2 text-sm font-semibold border rounded-r-md border-gray-700">
+                        <button onClick={() => buttonClick(current + 1)} disabled={current === pages.length || 1} type="button" className="inline-flex items-center px-2 py-2 text-sm font-semibold border rounded-r-md border-gray-700">
                             <span className="sr-only">Next</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="w-5 h-5">
                                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path>
