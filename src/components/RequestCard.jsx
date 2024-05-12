@@ -1,23 +1,35 @@
+import DateObject from "react-date-object";
+import { useEffect, useState } from "react";
 
-const RequestCard = () => {
+
+const RequestCard = ({card}) => {
+    const {  FoodName, donar, FoodQuantity, ExpiredDateTime, AdditionalNotes, status } = card
+    const [newDate, setNewDate] = useState('')
+    const [newQuantity, setnewQuantity] = useState('')
+
+    useEffect(() => {
+        setNewDate(ExpiredDateTime);
+        setnewQuantity(FoodQuantity);
+    }, [AdditionalNotes, ExpiredDateTime, FoodQuantity]);
+
     return (
         <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17&quot;
-                </th>
-                <td className="px-6 py-4">
-                    Silver
-                </td>
-                <td className="px-6 py-4">
-                    Laptop
-                </td>
-                <td className="px-6 py-4">
-                    $2999
-                </td>
-                <td className="px-6 py-4">
-                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
+            <th scope="row" className="px-6 pl-20 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {FoodName}
+            </th>
+            <td className="px-6 py-4">
+                {status}
+            </td>
+            <td className="px-6 py-4">
+                {new DateObject(newDate).format('DD/MM/YYYY')}
+            </td>
+            <td className="px-6 py-4">
+                {newQuantity}
+            </td>
+            <td className="px-6 py-4 flex gap-5">
+                {donar?.orderDate}
+            </td>
+        </tr>
 
     );
 };

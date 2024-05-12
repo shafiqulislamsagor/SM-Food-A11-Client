@@ -27,10 +27,11 @@ const CardInfo = () => {
 
     const confirmed = e => {
         const notes = e.target.Notes.value
+        const foodId = _id
         const orderDate = new DateObject().format("DD/MM/YYYY")
         const donerEmail = e.target.userName.value
         const donarName = user.displayName
-        const donar = { notes, orderDate, donarName, donerEmail }
+        const donar = { notes, orderDate, donarName, donerEmail,foodId }
         const status = 'Requested'
         // console.log(donar);
         const NewRequest = { FoodName, FoodImage, Donator, FoodQuantity, PickupLocation, ExpiredDateTime, AdditionalNotes, status, donar }

@@ -49,14 +49,17 @@ const ManageCard = ({ card }) => {
         }).then((result) => {
             axios.delete(`${import.meta.env.VITE_API_URL}/food/${id}`)
                 .then(() => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your Food has been deleted.",
-                            icon: "success"
-                        });
-                        navigate('/')
-                    }
+                    axios.delete(`${import.meta.env.VITE_API_URL}/food-requested/${id}`)
+                        .then(() => {
+                            if (result.isConfirmed) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your Food has been deleted.",
+                                    icon: "success"
+                                });
+                                navigate('/')
+                            }
+                        })
                 })
         }).catch(() => {
             Swal.fire({

@@ -2,12 +2,15 @@ import axios from "axios";
 import UseAuth from "../hooks/UseAuth";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
 const AddFoods = () => {
 
     const {user} = UseAuth()
+
+    const navigate = useNavigate()
 
     // console.log(user);
     const AddCard = async(event) =>{
@@ -39,6 +42,7 @@ const AddFoods = () => {
                 icon: "success"
             });
             target.reset()
+            navigate('/available-foods')
         }
         catch(error){
             toast.error(error.message)

@@ -1,32 +1,50 @@
+import axios from "axios";
 import RequestCard from "../components/RequestCard";
+import UseAuth from "../hooks/UseAuth";
+import { useQuery } from "@tanstack/react-query";
 
 const MyFoodRequest = () => {
+    const {user} = UseAuth()
+    const requestData = async() =>{
+        const {data} = await axios(`${import.meta.env.VITE_API_URL}/food-request/${user?.email}`)
+        return data
+    }
+
+    const { data, isLoading } = useQuery({
+        queryFn: () => requestData(),
+        queryKey: ['food']
+    })
+
+    if (isLoading) return <p>Loading now..........!!</p>
     return (
         <div className="my-10">
-            <h1 className="text-3xl ml-5 my-6 text-white font-medium flex items-center gap-3">Food Request :- <div className="badge badge-secondary badge-outline text-xl  px-3 h-auto ">20</div></h1>
+            <h1 className="text-3xl ml-5 my-6 text-white font-medium flex items-center gap-3">Food Request :- <div className="badge badge-secondary badge-outline text-xl  px-3 h-auto ">{data.length}</div></h1>
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg ">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3">
-                                Product name
+                                Food name
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Color
+                                Status
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Category
+                                Expired Date
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Price
+                                Quantity
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                Action
+                                Order Date
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <RequestCard />
+                        {
+                            data.map(card => <RequestCard card={card} key={card._id}/> )
+                        }
+                        
                     </tbody>
                 </table>
             </div>
