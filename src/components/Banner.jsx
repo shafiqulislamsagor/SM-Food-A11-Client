@@ -1,7 +1,24 @@
 import Marquee from "react-fast-marquee";
 import MarqueeCard from "./MarqueeCard";
+import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
 
 const Banner = () => {
+    const foodData = async () => {
+        try {
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/food`)
+            return data;
+        }
+        catch (err) {
+            console.log(err.message);
+        }
+    }
+    const { data: foodItems = [] } = useQuery({
+        queryFn: () => foodData(),
+        queryKey: ['food', foodData],
+    })
+
+    console.log(foodItems);
     return (
         <div className="bannerImg mb-16">
             <div className="bg-black bg-opacity-50">
@@ -18,12 +35,9 @@ const Banner = () => {
                 </div>
                 <h2 className="text-center text-4xl md:text-5xl text-white  font-medium  mb-6">Latest food news</h2>
                 <Marquee>
-                    <MarqueeCard />
-                    <MarqueeCard />
-                    <MarqueeCard />
-                    <MarqueeCard />
-                    <MarqueeCard />
-                    <MarqueeCard />
+                    {
+                        foodItems.sort((a, b) => b.ExpiredDateTime - a.ExpiredDateTime).slice(0, 6).map((card, id) => <MarqueeCard card={card} key={id} />)
+                    }
                 </Marquee>
                 <div>
 

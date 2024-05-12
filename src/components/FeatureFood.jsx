@@ -3,6 +3,7 @@ import FeatureCard from './FeatureCard';
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom';
+import { Triangle } from 'react-loader-spinner';
 
 
 const FeatureFood = () => {
@@ -22,7 +23,15 @@ const FeatureFood = () => {
     })
     // console.log(isLoading);
     // console.log(foodItems);
-    if(isLoading) return <p>Loading ........!!!</p>
+    if(isLoading) return <div className="flex justify-centerflex justify-center items-center h-screen"><Triangle
+    visible={true}
+    height="100"
+    width="100"
+    color="#ff0"
+    ariaLabel="triangle-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+    /></div>
 
     return (
         <div className='w-[90%] mx-auto my-16'>

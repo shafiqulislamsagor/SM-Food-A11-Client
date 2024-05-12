@@ -4,21 +4,21 @@ import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const menuNavLink = <>
-        <div className="flex flex-col gap-y-4 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-7 lg:mt-0">
+        <div className="flex flex-col gap-y-3 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-5 lg:mt-0">
             <div>
-                <NavLink to='/' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#" aria-current="page">Home</NavLink>
+                <NavLink to='/' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#" aria-current="page">Home</NavLink>
             </div>
             <div>
-                <NavLink to='/available-foods' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#"> Available Foods</NavLink>
+                <NavLink to='/available-foods' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#"> Available Foods</NavLink>
             </div>
             <div>
-                <NavLink to='/add-foods' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#">Add Food</NavLink>
+                <NavLink to='/add-foods' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#">Add Food</NavLink>
             </div>
             <div>
-                <NavLink to='/manage-my-food' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#"> Manage My Foods</NavLink>
+                <NavLink to='/manage-my-food' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#"> Manage My Foods</NavLink>
             </div>
             <div>
-                <NavLink to='/my-food-request' className="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300" href="#">My Food Request</NavLink>
+                <NavLink to='/my-food-request' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#">My Food Request</NavLink>
             </div>
         </div>
     </>

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ManageCard from "../components/ManageCard";
 import UseAuth from './../hooks/UseAuth';
+import { Triangle } from "react-loader-spinner";
 
 const ManageMyFood = () => {
 
@@ -14,10 +15,18 @@ const ManageMyFood = () => {
 
     const { data, isLoading } = useQuery({
         queryFn: () => getFood(),
-        queryKey: ['food']
+        queryKey: ['manage']
     })
 
-    if (isLoading) return <p>Loading now..........!!</p>
+    if (isLoading) return <div className="flex justify-centerflex justify-center items-center h-screen"><Triangle
+    visible={true}
+    height="100"
+    width="100"
+    color="#ff0"
+    ariaLabel="triangle-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+    /></div>
 
     return (
         <div className="w-full mx-auto mb-16 mt-8">

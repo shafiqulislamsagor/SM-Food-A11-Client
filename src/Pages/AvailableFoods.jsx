@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import AvailableCard from "../components/AvailableCard";
 import { useEffect, useState } from "react";
+import { Triangle } from "react-loader-spinner";
 
 
 const AvailableFoods = () => {
@@ -63,7 +64,15 @@ const AvailableFoods = () => {
         loaded()
     }, [search])
 
-    if (isLoading) return <p>Loading........!</p>
+    if (isLoading) return <div className="flex justify-centerflex justify-center items-center h-screen"><Triangle
+    visible={true}
+    height="100"
+    width="100"
+    color="#ff0"
+    ariaLabel="triangle-loading"
+    wrapperStyle={{}}
+    wrapperClass=""
+    /></div>
     return (
         <div>
             <div className="flex flex-col md:flex-row justify-evenly items-center gap-10 my-8">

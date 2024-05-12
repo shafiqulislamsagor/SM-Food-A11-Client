@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import UseAuth from './hooks/UseAuth';
 import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
+import {  Vortex } from 'react-loader-spinner';
 
 function App() {
 
@@ -25,7 +26,15 @@ function App() {
   }, [pathName])
 
   // console.log(user,loading);
-  if (!loading) return <p>Loading now..........</p>
+  if (!loading) return <div className="flex justify-centerflex justify-center items-center h-screen"><Vortex
+  visible={true}
+  height="150"
+  width="150"
+  ariaLabel="vortex-loading"
+  wrapperStyle={{}}
+  wrapperClass="vortex-wrapper"
+  colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+  /></div>
 
   return (
     <>

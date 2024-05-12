@@ -94,15 +94,15 @@ const CardInfo = () => {
                                 </ul>
                             </div>
                             <div className="mt-10 mb-4">
-                                <button disabled={newStatus === 'Requested'} onClick={() => document.getElementById('my_modal_1').showModal()} type="submit" className="group relative w-[80%] ml-3 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <button disabled={newStatus === 'Requested' || user?.email === Donator?.DonatorEmail} onClick={() => document.getElementById('my_modal_1').showModal()} type="submit" className="group relative w-[80%] ml-3 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                                         <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                             <path fillRule="evenodd" d="M10 2.667c-3.68 0-6.667 2.987-6.667 6.666 0 3.68 2.987 6.667 6.667 6.667 3.68 0 6.667-2.987 6.667-6.667 0-3.68-2.987-6.666-6.667-6.666zM8.333 10H6.667v-1.666h1.666V6.667h1.667v1.667h1.667v1.666H10V11H8.333v-1z" clipRule="evenodd" />
                                         </svg>
                                     </span>
                                     {
-                                        newStatus !== 'Requested' ? 'Food Request' : 'Requested'
-                                    }
+                                        user?.email === Donator?.DonatorEmail ? 'Your Product' : newStatus !== 'Requested' ? 'Food Request' : 'Requested'
+                                    } 
 
                                 </button>
                                 <dialog id="my_modal_1" className="modal">
