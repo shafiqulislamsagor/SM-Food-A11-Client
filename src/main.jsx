@@ -10,16 +10,19 @@ import {
 } from '@tanstack/react-query'
 import ContextApi from './routes/ContextApi.jsx'
 import { ToastContainer } from 'react-toastify'
+import { HelmetProvider } from 'react-helmet-async'
 
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ContextApi>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ToastContainer />
-      </QueryClientProvider>
-    </ContextApi>
+    <HelmetProvider>
+      <ContextApi>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+          <ToastContainer />
+        </QueryClientProvider>
+      </ContextApi>
+    </HelmetProvider>
   </React.StrictMode>,
 )

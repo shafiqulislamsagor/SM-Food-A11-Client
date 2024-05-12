@@ -10,11 +10,13 @@ import MyFoodRequest from "../Pages/MyFoodRequest";
 import Privet from "./Privet";
 import CardInfo from "../Pages/CardInfo";
 import AuthenticationPrivet from "./AuthenticationPrivet";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        errorElement:<ErrorPage/>,
         children: [
             {
                 path: '/',

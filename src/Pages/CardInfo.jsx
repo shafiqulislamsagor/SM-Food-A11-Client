@@ -35,7 +35,7 @@ const CardInfo = () => {
         const status = 'Requested'
         // console.log(donar);
         const NewRequest = { FoodName, FoodImage, Donator, FoodQuantity, PickupLocation, ExpiredDateTime, AdditionalNotes, status, donar }
-        console.log(NewRequest);
+        // console.log(NewRequest);
         axios.post(`${import.meta.env.VITE_API_URL}/food-request`, NewRequest)
             .then(() => {
                 
@@ -58,7 +58,7 @@ const CardInfo = () => {
             <div className="pt-6">
                 <div className="mx-auto mt-6 w-[90%]  md:w-3/5 sm:px-6 justify-center lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
 
-                    <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
+                    <div className="aspect-h-5 h-80 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
                         <img src={FoodImage} alt="Model wearing plain white basic tee." className="h-full w-full object-cover object-center" />
                     </div>
                     <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
