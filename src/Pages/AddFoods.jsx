@@ -35,7 +35,7 @@ const AddFoods = () => {
         console.log(Food);
         
         try{
-            await axios.post(`${import.meta.env.VITE_API_URL}/food`,Food)
+            await axios.post(`${import.meta.env.VITE_API_URL}/food`,Food,{withCredentials:true})
             Swal.fire({
                 title: "Successfully",
                 text: "Your Food Product Added..!!",

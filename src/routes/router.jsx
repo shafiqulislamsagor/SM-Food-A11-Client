@@ -9,6 +9,7 @@ import ManageMyFood from "../Pages/ManageMyFood";
 import MyFoodRequest from "../Pages/MyFoodRequest";
 import Privet from "./Privet";
 import CardInfo from "../Pages/CardInfo";
+import AuthenticationPrivet from "./AuthenticationPrivet";
 
 const router = createBrowserRouter([
     {
@@ -21,11 +22,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <Login />
+                element: <AuthenticationPrivet><Login /></AuthenticationPrivet>
             },
             {
                 path: '/registration',
-                element: <Register />
+                element: <AuthenticationPrivet><Register /></AuthenticationPrivet>
             },
             {
                 path: '/available-foods',

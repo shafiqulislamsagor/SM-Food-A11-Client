@@ -5,57 +5,72 @@ import LoginAnimation from "../animation/LoginAnimation";
 import UseAuth from "../hooks/UseAuth";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
-    const {UserLogin,googleLogin} = UseAuth()
+    const { UserLogin, googleLogin } = UseAuth()
     const location = useLocation()
     const navigate = useNavigate()
 
-    const google = () =>{
+    const google = () => {
         googleLogin()
-        .then(()=>{
-            toast('😍 Log in Successfully with google', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark"
+            .then((current) => {
+                const email = current?.user?.email
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email:email },{withCredentials:true})
+                    .then(() => {
+                        toast('😍 Log in Successfully with google', {
+                            position: "top-right",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark"
+                        });
+                        navigate(location.state ? location.state : '/')
+                    })
+                    .catch(()=>{
+                        console.log('cookies send error');
+                    })
+
+            })
+            .catch(() => {
+                Swal.fire({
+                    title: "Sorry",
+                    text: "Google sign up again...!",
+                    icon: "error"
                 });
-                navigate(location.state ? location.state: '/')
-        })
-        .catch(()=>{
-            Swal.fire({
-                title: "Sorry",
-                text: "Google sign up again...!",
-                icon: "error"
-            });
-        })
+            })
     }
 
-    const loginForm = event =>{
+    const loginForm = event => {
         event.preventDefault()
 
         const target = event.target
         const email = target.email.value
         const password = target.password.value
 
-        UserLogin(email,password)
-        .then(()=>{
-            toast('😍 Log in Successfully', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark"
-                });
-                navigate(location.state ? location.state: '/')
-        })
+        UserLogin(email, password)
+            .then(() => {
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email:email },{withCredentials:true})
+                    .then(() => {
+                        toast('😍 Log in Successfully', {
+                            position: "top-right",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark"
+                        });
+                        navigate(location.state ? location.state : '/')
+                    })
+                    .catch(()=>{
+                        console.log('cookies send error');
+                    })
+            })
 
     }
     return (
@@ -64,7 +79,7 @@ const Login = () => {
                 <div className="text-center lg:text-left text-white">
                     <div
                         className="">
-                        <LoginAnimation/>
+                        <LoginAnimation />
                     </div>
                 </div>
                 <div className="card shrink-0 w-full lg:max-w-[50%] shadow-2xl bg-base-100">

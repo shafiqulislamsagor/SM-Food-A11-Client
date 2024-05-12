@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import Auth from "../../firebase.config";
+import axios from "axios";
 
 export const ContextAll = createContext(null)
 
@@ -26,12 +27,15 @@ const ContextApi = ({ children }) => {
     }
 
     const provider = new GoogleAuthProvider();
-    const googleLogin = () =>{
-        return signInWithPopup(Auth,provider)
+    const googleLogin = () => {
+        return signInWithPopup(Auth, provider)
     }
 
-    const UserLogout = () => {
+    const UserLogout = async () => {
         setLoading(false)
+        await axios(`${import.meta.env.VITE_API_URL}/logout`, {
+            withCredentials: true,
+        })
         return signOut(Auth)
     }
 
@@ -46,7 +50,7 @@ const ContextApi = ({ children }) => {
     }, [])
 
 
-    const value = { user, loading, UserCreate, UserLogin, UserUpdate , googleLogin , UserLogout }
+    const value = { user, loading, UserCreate, UserLogin, UserUpdate, googleLogin, UserLogout }
     return (
         <ContextAll.Provider value={value}>{children}</ContextAll.Provider>
     );

@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import RegisterAnimation from "../animation/RegisterAnimation";
 import UseAuth from "../hooks/UseAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const Register = () => {
@@ -28,14 +29,18 @@ const Register = () => {
                 // console.log('user create');
                 UserUpdate(name, photo)
                     .then(() => {
-                        Swal.fire({
-                            title: "Successfully",
-                            text: "Your Account has been Created..! Please Log in Your Accounts",
-                            icon: "success"
-                        });
-                        UserLogout()
-                        navigate('/login')
-                        target.reset()
+                        axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email:email },{withCredentials:true})
+                            .then(() => {
+                                Swal.fire({
+                                    title: "Successfully",
+                                    text: "Your Account has been Created..! Please Log in Your Accounts",
+                                    icon: "success"
+                                });
+                                UserLogout()
+                                navigate('/login')
+                                target.reset()
+                            })
+
                     })
             })
             .catch(() => {
@@ -47,7 +52,7 @@ const Register = () => {
                 target.reset()
             })
 
-        console.log(name, photo, email, password);
+        // console.log(name, photo, email, password);
     }
     return (
         <div className="hero register_img min-h-screen bg-base-200">

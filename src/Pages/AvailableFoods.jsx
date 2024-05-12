@@ -13,7 +13,7 @@ const AvailableFoods = () => {
 
     // Food All data 
     const FoodData = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_API_URL}/food-All?page=${current}&size=${parpage}&filter=${filter}&search=${search}`);
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/food-All?page=${current}&size=${parpage}&filter=${filter}&search=${search}`,{withCredentials:true});
         return data;
     }
     
@@ -57,7 +57,7 @@ const AvailableFoods = () => {
     // console.log(current);
     useEffect(() => {
         const loaded = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_URL}/food-counts?search=${search}`);
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/food-counts?search=${search}`,{withCredentials:true});
             setFoodCounts(data.foodCounts)
         }
         loaded()

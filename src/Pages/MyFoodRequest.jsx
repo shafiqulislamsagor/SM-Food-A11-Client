@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 const MyFoodRequest = () => {
     const {user} = UseAuth()
     const requestData = async() =>{
-        const {data} = await axios(`${import.meta.env.VITE_API_URL}/food-request/${user?.email}`)
+        const {data} = await axios(`${import.meta.env.VITE_API_URL}/food-request/${user?.email}`,{withCredentials:true})
         return data
     }
 
