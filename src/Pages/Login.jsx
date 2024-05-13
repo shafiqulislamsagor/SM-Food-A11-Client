@@ -84,7 +84,7 @@ const Login = () => {
                 </div>
                 <div className="card shrink-0 w-full lg:max-w-[50%] shadow-2xl bg-base-100">
                     <div className="px-10 pt-14">
-                        <div className="flex flex-row items-center justify-center lg:justify-start">
+                        <div className="flex flex-col gap-5 md:flex-row items-center justify-center lg:justify-start">
                             <p className="mb-0 me-4 text-lg">Sign in with</p>
                             <button onClick={google} type="button" className="w-auto flex-1 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-lg font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800">
                                 <svg className="w-4 h-auto" width="46" height="47" viewBox="0 0 46 47" fill="none">

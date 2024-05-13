@@ -18,7 +18,7 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3">
+                <div className="grid grid-cols-1 lg:grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3">
                     <ul className="flex flex-col items-start space-y-2  mb-6 text-base font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                         <li className="text-2xl">Quick Page</li>
                         <Link to='/' className="flex gap-2 items-center">

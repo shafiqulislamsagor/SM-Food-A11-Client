@@ -20,6 +20,11 @@
 
 }
 
+.textStyle{
+  color: #ff0;
+  text-shadow: 2px 2px 1px hsl(0, 89%, 35%);
+}
+
 .text_Yellow{
     color: #ff0;
 }
