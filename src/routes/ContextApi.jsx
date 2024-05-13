@@ -17,10 +17,12 @@ const ContextApi = ({ children }) => {
     }
 
     const UserLogin = async (email, password) => {
+        setLoading(false)
         return await signInWithEmailAndPassword(Auth, email, password)
     }
 
     const UserUpdate = async (name, photo) => {
+        setLoading(false)
         return await updateProfile(Auth.currentUser, {
             displayName: name, photoURL: photo
         })
@@ -28,6 +30,7 @@ const ContextApi = ({ children }) => {
 
     const provider = new GoogleAuthProvider();
     const googleLogin = () => {
+        setLoading(false)
         return signInWithPopup(Auth, provider)
     }
 

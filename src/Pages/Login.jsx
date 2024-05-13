@@ -71,6 +71,9 @@ const Login = () => {
                         console.log('cookies send error');
                     })
             })
+            .catch(()=>{
+                toast.error('Your email or password wrond..!')
+            })
 
     }
     return (

@@ -24,6 +24,15 @@ const Register = () => {
         const email = target.email.value
         const password = target.password.value
 
+        if(password.length < 6) {
+            Swal.fire({
+                title: "Sorry",
+                text: "Password minimum 6 characters",
+                icon: "error"
+            });
+            return
+        }
+
         UserCreate(email, password)
             .then(() => {
                 // console.log('user create');
@@ -50,8 +59,8 @@ const Register = () => {
                     icon: "error"
                 });
                 target.reset()
+                // navigate('/')
             })
-
         // console.log(name, photo, email, password);
     }
     return (
