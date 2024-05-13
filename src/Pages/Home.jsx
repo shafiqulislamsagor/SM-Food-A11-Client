@@ -2,6 +2,7 @@
 import Banner from '../components/Banner';
 import FeatureFood from '../components/FeatureFood';
 import FoodMarque from '../components/FoodMarque';
+import FoodQuility from '../components/FoodQuility';
 import FoodServes from '../components/FoodServes';
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
             <FeatureFood/>
             <FoodMarque/>
             <FoodServes/>
+            <FoodQuility/>
         </div>
     );
 };

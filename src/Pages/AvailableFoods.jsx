@@ -10,21 +10,21 @@ const AvailableFoods = () => {
     const [FoodCount, setFoodCounts] = useState(0)
     const [current, setcurrent] = useState(1)
     const [filter, setFilter] = useState('')
-    const [search,setSearch] = useState('')
+    const [search, setSearch] = useState('')
 
     // Food All data 
     const FoodData = async () => {
         const { data } = await axios(`${import.meta.env.VITE_API_URL}/food-All?page=${current}&size=${parpage}&filter=${filter}&search=${search}`);
         return data;
     }
-    
-    const parpage = 9 ;
+
+    const parpage = 9;
 
 
 
     const { data: AllFood = [], isLoading } = useQuery({
         queryFn: () => FoodData(),
-        queryKey: ['food', current, parpage, filter,search]
+        queryKey: ['food', current, parpage, filter, search]
     })
 
 
@@ -44,15 +44,21 @@ const AvailableFoods = () => {
     const filterClick = e => {
         setFilter(e.target.value)
     }
-    const searchBtn = e =>{
+    const searchBtn = e => {
         e.preventDefault()
 
         setSearch(e.target.search.value);
     }
 
-    const resetButton = () =>{
+    const resetButton = () => {
         setSearch('')
         setFilter('')
+    }
+
+    const [column , setColumn] = useState(true)
+
+    const columnHandle = () =>{
+        setColumn(!column)
     }
 
     // console.log(current);
@@ -65,23 +71,23 @@ const AvailableFoods = () => {
     }, [search])
 
     if (isLoading) return <div className="flex justify-centerflex justify-center items-center h-screen"><Triangle
-    visible={true}
-    height="100"
-    width="100"
-    color="#ff0"
-    ariaLabel="triangle-loading"
-    wrapperStyle={{}}
-    wrapperClass=""
+        visible={true}
+        height="100"
+        width="100"
+        color="#ff0"
+        ariaLabel="triangle-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
     /></div>
     return (
         <div>
-            <div className="flex flex-col md:flex-row justify-evenly items-center gap-10 my-8">
+            <div className="flex flex-col md:flex-row justify-evenly items-center gap-8 md:gap-4 lg:gap-10 my-8">
                 <div >
                     <div className="w-80 border rounded-lg">
                         <form onSubmit={searchBtn} className="relative flex" >
-                            <div  className="relative">
+                            <div className="relative">
                                 <input name="search" className="py-3 pe-20 ps-4 block text-white w-full border-gray-200 rounded-lg text-sm focus:border-green-500 focus:ring-green-500 disabled:opacity-50 disabled:pointer-events-none rounded-e-none dark:bg-neutral-900 dark:border-green-700 dark:text-white dark:placeholder-neutral-500 dark:focus:ring-green-600" type="text" placeholder="Type a Food name" />
-                                <div  className="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-3.5">
+                                <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-3.5">
                                     <svg className="flex-shrink-0 size-4 text-gray-400 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <circle cx="11" cy="11" r="8"></circle>
                                         <path d="m21 21-4.3-4.3"></path>
@@ -104,11 +110,17 @@ const AvailableFoods = () => {
                     <option value='less time'>Expire Date Less time</option>
                     <option value='more time'>Expire Date more time</option>
                 </select>
-                <button onClick={resetButton} className="btn bg-[#ad1a19] hover:bg-[#851b1b] text-white">Reset All</button>
+                <div className="flex gap-3">
+                    <button onClick={resetButton} className="btn bg-[#ad1a19] hover:bg-[#851b1b] text-white">Reset All</button>
+                </div>
+            </div>
+            <div className="flex flex-col md:flex-row justify-evenly items-center md:gap-4 lg:gap-10 my-8">
+
+                <button onClick={columnHandle} className="btn bg-[#ad1a19] hover:bg-[#851b1b] text-white">Column : {column ? 2 : 3}</button>
             </div>
             <div className="w-[95%] mx-auto">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium"><span className="text-[#ff0] textLayer"> Available</span> Foods Page : {current}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
+                <div className={column ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10' : 'grid grid-cols-1 md:grid-cols-2 gap-5 my-10'}>
                     {
                         AllFood.map((single, id) => <AvailableCard card={single} key={id} />)
                     }
