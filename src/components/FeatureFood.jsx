@@ -56,7 +56,7 @@ const FeatureFood = () => {
                 }
             </div>
             <div className='flex justify-center my-6'>
-                <Link to='/available-foods' className="py-3 px-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-gray-200 text-black hover:btnHoverColor  btnColor  disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-[#e48413] dark:text-white dark:hover:text-white">Show All Foods</Link>
+                <Link to='/available-foods' className="py-3 px-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border   hover:btnHoverColor  btnColor  disabled:pointer-events-none border-neutral-700 hover:bg-[#e48413] text-white hover:text-white">Show All Foods</Link>
             </div>
         </div>
     );

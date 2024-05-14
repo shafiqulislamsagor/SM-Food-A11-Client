@@ -14,19 +14,19 @@ const Navbar = () => {
     const menuNavLink = <>
         <div className="flex flex-col gap-y-3 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-5 lg:mt-0">
             <div>
-                <NavLink to='/' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#" aria-current="page">Home</NavLink>
+                <NavLink to='/' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block  px-3 py-1 text-white hover:text-neutral-300'} href="#" aria-current="page">Home</NavLink>
             </div>
             <div>
-                <NavLink to='/available-foods' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#"> Available Foods</NavLink>
+                <NavLink to='/available-foods' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block  px-3 py-1 text-white hover:text-neutral-300'} href="#"> Available Foods</NavLink>
             </div>
             <div>
-                <NavLink to='/add-foods' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#">Add Food</NavLink>
+                <NavLink to='/add-foods' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block  px-3 py-1 text-white hover:text-neutral-300'} href="#">Add Food</NavLink>
             </div>
             <div>
-                <NavLink to='/manage-my-food' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#"> Manage My Foods</NavLink>
+                <NavLink to='/manage-my-food' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block  px-3 py-1 text-white hover:text-neutral-300'} href="#"> Manage My Foods</NavLink>
             </div>
             <div>
-                <NavLink to='/my-food-request' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block text-black hover:text-gray-600 px-3 py-1 dark:text-white dark:hover:text-neutral-300'} href="#">My Food Request</NavLink>
+                <NavLink to='/my-food-request' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block  px-3 py-1 text-white hover:text-neutral-300'} href="#">My Food Request</NavLink>
             </div>
         </div>
     </>
@@ -74,7 +74,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end w-1/3">
                     {
-                        !user ? <Link to='/login' type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-gray-200 text-black hover:btnHoverColor  btnColor  disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-[#e48413] dark:text-white dark:hover:text-white">
+                        !user ? <Link to='/login' type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border  hover:btnHoverColor  btnColor  disabled:pointer-events-none border-neutral-700 hover:bg-[#e48413] text-white hover:text-white">
                             Log in
                         </Link> : <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

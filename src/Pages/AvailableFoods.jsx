@@ -86,9 +86,9 @@ const AvailableFoods = () => {
                     <div className="w-80 border rounded-lg">
                         <form onSubmit={searchBtn} className="relative flex" >
                             <div className="relative">
-                                <input name="search" className="py-3 pe-20 ps-4 block text-white w-full border-gray-200 rounded-lg text-sm focus:border-green-500 focus:ring-green-500 disabled:opacity-50 disabled:pointer-events-none rounded-e-none dark:bg-neutral-900 dark:border-green-700 dark:text-white dark:placeholder-neutral-500 dark:focus:ring-green-600" type="text" placeholder="Type a Food name" />
+                                <input name="search" className="py-3 pe-20 ps-4 block  w-full  rounded-lg text-sm focus:border-green-500  disabled:opacity-50 disabled:pointer-events-none rounded-e-none bg-neutral-900 border-green-700 text-white placeholder-neutral-500 focus:ring-green-600" type="text" placeholder="Type a Food name" />
                                 <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-3.5">
-                                    <svg className="flex-shrink-0 size-4 text-gray-400 dark:text-white/60" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <svg className="flex-shrink-0 size-4 text-gray-400 text-white/60" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <circle cx="11" cy="11" r="8"></circle>
                                         <path d="m21 21-4.3-4.3"></path>
                                     </svg>

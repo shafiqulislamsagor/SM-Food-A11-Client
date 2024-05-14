@@ -18,7 +18,7 @@ const FeatureCard = ({ card }) => {
     return (
         <div className=" p-4 shadow-md bg-gray-900 text-gray-100">
             <div className="flex items-center space-x-2 mb-4">
-                <img src={Donator?.donatorImage} alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-300" />
+                <img src={Donator?.donatorImage} alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-300" />
                 <div className="-space-y-1">
                     <h2 className="text-sm font-semibold leading-none">{Donator?.DonatorName}</h2>
                 </div>
