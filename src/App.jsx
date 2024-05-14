@@ -10,7 +10,8 @@ import {  Vortex } from 'react-loader-spinner';
 
 function App() {
 
-  const { loading } = UseAuth()
+  const { loading , user} = UseAuth()
+  console.log(loading , user);
 
   const location = useLocation()
   const [path, setPath] = useState('HOME')

@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Login = () => {
-    const { UserLogin, googleLogin } = UseAuth()
+    const { UserLogin, googleLogin , setUser ,setLoading} = UseAuth()
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -41,6 +41,9 @@ const Login = () => {
                     text: "Google sign up again...!",
                     icon: "error"
                 });
+                setUser(null)
+                setLoading(true)
+                navigate('/login')
             })
     }
 
@@ -73,6 +76,9 @@ const Login = () => {
             })
             .catch(()=>{
                 toast.error('Your email or password wrond..!')
+                setUser(null)
+                setLoading(true)
+                navigate('/login')
             })
 
     }

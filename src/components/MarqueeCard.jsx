@@ -1,7 +1,7 @@
 
 
 const MarqueeCard = ({ card }) => {
-    console.log(card);
+    // console.log(card);
     return (
         <div className="flex flex-col w-[350px] ml-10 bg-white border shadow-sm rounded-xl dark:bg-neutral-900 dark:border-neutral-700 dark:shadow-neutral-700/70">
             <div className="h-64">

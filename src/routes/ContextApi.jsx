@@ -53,7 +53,7 @@ const ContextApi = ({ children }) => {
     }, [])
 
 
-    const value = { user, loading, UserCreate, UserLogin, UserUpdate, googleLogin, UserLogout }
+    const value = { user, loading,setUser , setLoading , UserCreate, UserLogin, UserUpdate, googleLogin, UserLogout }
     return (
         <ContextAll.Provider value={value}>{children}</ContextAll.Provider>
     );

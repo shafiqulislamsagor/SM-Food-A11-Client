@@ -12,7 +12,7 @@ import axios from "axios";
 const Register = () => {
     const navigate = useNavigate()
 
-    const { UserCreate, UserUpdate, UserLogout } = UseAuth()
+    const { UserCreate, UserUpdate, UserLogout , setLoading , setUser} = UseAuth()
 
     const RegisterForm = event => {
 
@@ -58,6 +58,9 @@ const Register = () => {
                     text: "Already Your Account created this Email..!",
                     icon: "error"
                 });
+                setUser(null)
+                setLoading(true)
+                navigate('/registration')
                 target.reset()
                 // navigate('/')
             })

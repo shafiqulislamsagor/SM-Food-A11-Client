@@ -18,7 +18,7 @@ const Banner = () => {
         queryKey: ['food', foodData],
     })
 
-    console.log(foodItems);
+    // console.log(foodItems);
     return (
         <div className="bannerImg mb-16">
             <div className="bg-black bg-opacity-50">
