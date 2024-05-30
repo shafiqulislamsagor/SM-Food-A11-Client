@@ -28,6 +28,9 @@ const Navbar = () => {
             <div>
                 <NavLink to='/my-food-request' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block  px-3 py-1 text-white hover:text-neutral-300'} href="#">My Food Request</NavLink>
             </div>
+            <div>
+                <NavLink to='/all-food-reviews' className={({ isActive }) => isActive ? 'bg-[#ff0] text-black px-3 py-1 rounded-lg font-bold fontLarge text-base' : 'inline-block  px-3 py-1 text-white hover:text-neutral-300'} href="#">All Reviews Reviews</NavLink>
+            </div>
         </div>
     </>
 

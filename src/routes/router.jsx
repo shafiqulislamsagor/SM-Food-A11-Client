@@ -11,6 +11,7 @@ import Privet from "./Privet";
 import CardInfo from "../Pages/CardInfo";
 import AuthenticationPrivet from "./AuthenticationPrivet";
 import ErrorPage from "../Pages/ErrorPage";
+import ReviewSection from './../components/Review/ReviewSection';
 
 const router = createBrowserRouter([
     {
@@ -47,10 +48,15 @@ const router = createBrowserRouter([
                 element: <Privet><MyFoodRequest /></Privet>
             },
             {
+                path:'/all-food-reviews',
+                element:<ReviewSection/>
+            },
+            {
                 path: '/food-info/:id',
                 element: <Privet><CardInfo /></Privet>,
                 loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/food/${params.id}`)
             }
+
         ]
     },
 ]);
