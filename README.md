@@ -2,17 +2,47 @@
 
 ## [SM Food](https://sm-food.web.app/)
 
+## Overview
+SM Food is a web application designed to provide a seamless and engaging experience for users looking to explore and manage food-related products. The application features a distinctive design, ensuring a unique look and feel that sets it apart from other projects. It is built with responsiveness in mind, guaranteeing an optimal experience across mobile, tablet, and desktop devices. The project incorporates robust authentication features and an interactive navbar to enhance user interaction and security.
+
 ## Features
 
- - Distinctive design: SM Food is a website with a distinctive design, avoiding similarities with examples from previous modules. Created using free design resources for inspiration if needed.
+- **Distinctive Design:** SM Food features a unique design, avoiding similarities with previous examples. Free design resources were used for inspiration.
 
- - Responsive Layout: Responsiveness is ensured across all devices – mobile, tablet and desktop – for a seamless user experience.
+- **Responsive Layout:** Ensures seamless user experience across mobile, tablet, and desktop devices.
 
- - Authentication Features: Implement email and password-based authentication for login and registration, with optional social media login. Include password verification criteria and display appropriate error messages.
+- **Authentication Features:** Email and password-based authentication for login and registration, with optional social media login. Password verification criteria and error messages are included.
 
- - Interactive Navbar: Create a dynamic navbar with active routes, displaying user-specific options like profile and logout if logged in, or login button if not. Incorporate hover functionality to reveal user information.
+## Skills
 
- - Interactive Product: Added features to manage product added, updated, deleted and user profile, also able to manage user can't buy any of his products enables users to modify product information and manage their profile efficiently within the application.
+- HTML
+- CSS
+- Tailwind CSS
+- React JS
+- Firebase
+- node js
+- Express js
+- mongoDB
+
+## Running the Project
+
+```bash
+// Install dependencies
+npm install
+
+// Create .env.local file and set up Firebase keys
+VITE_apiKey=hidden
+VITE_authDomain=hidden
+VITE_projectId=hidden
+VITE_storageBucket=hidden
+VITE_messagingSenderId=hidden
+VITE_appId=hidden
+
+VITE_SERVER_URL=https://b9a11-server-side-shafiqulislamsagor.vercel.app
+
+// Run the project
+npm run dev
+```
 
 ## npm Package Using
 
